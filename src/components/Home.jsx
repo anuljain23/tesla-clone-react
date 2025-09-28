@@ -3,6 +3,7 @@ import Section from './Section'
 
 const cars = [
     {
+        id: 'cybertruck',
         title: 'CYBERTRUCK',
         description: '0% APR with FSD (Supervised) Purchase Ends September 30',
         backgroundImg: 'cybertruck.jpg',
@@ -11,6 +12,7 @@ const cars = [
         tag: 'Utility Truck',
     },
     {
+        id: 'model-s',
         title: 'Model S',
         description: 'Now Includes Luxe Package With FSD (Supervised) and More',
         backgroundImg: 'model-s.jpg',
@@ -19,6 +21,7 @@ const cars = [
         tag: 'Luxury Sedan',
     },
     {
+        id: 'model-y',
         title: 'Model Y',
         description: 'Now Includes Luxe Package With FSD (Supervised) and More',
         backgroundImg: 'model-y.jpg',
@@ -27,6 +30,7 @@ const cars = [
         tag: 'Midsize SUV',
     },
     {
+        id: 'model-3',
         title: 'Model 3',
         description: 'Lease From $ 349/mo',
         backgroundImg: 'model-3.jpg',
@@ -35,6 +39,7 @@ const cars = [
         tag: 'Sports Sedan',
     },
     {
+        id: 'model-x',
         title: 'Model X',
         description: '3.99% APR Available',
         backgroundImg: 'model-x.jpg',

@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 const Section = ({ data }) => {
-    const { title, description, backgroundImg, leftBtnText, rightBtnText } = data;
+    const { id, title, description, backgroundImg, leftBtnText, rightBtnText } = data;
     return (
-        <Wrap className="flex flex-col justify-end items-center" bgImage={backgroundImg}>
+        <Wrap id={id} className="flex flex-col justify-end items-center" bgImage={backgroundImg}>
             <ItemText >
                 <h1 className="text-5xl font-bold !text-white">{title}</h1>
                 <p className="font-medium text-xl !mt-3 !text-white">{description}</p>
@@ -41,8 +41,17 @@ const Wrap = styled.div`
 const ItemText = styled.div`
     position: absolute;
     top:25vh;
-    left: 80px;
-    text-aligin: center:
+    left: 64px;
+    text-aligin: center;
+
+    @media (max-width:768px){
+        left: 20px;
+        top: 20vh;
+    }
+
+    @media (max-width:1248px){
+        left: 36px;
+    }
 `
 
 const ButtonGroup = styled.div`
@@ -55,7 +64,7 @@ const LeftButton = styled.div`
     width: 256px;
     color: white;
     border-radius: 100px;
-    opacity: 0.85;
+    opacity: 0.80;
     text-transform: uppercase;
     font-size: 12px;
     cursor: pointer;
@@ -66,7 +75,6 @@ const LeftButton = styled.div`
 
 const RightButton = styled(LeftButton)`
     background: white;
-    opacity: 0.65;
     color: black;
 `
 
