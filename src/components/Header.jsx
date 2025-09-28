@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import { selectCars } from "../features/car/carSlice";
+import { selectSolar } from "../features/solar/solarSlice";
 
 const Header = () => {
     const [burgerStatus, setBurgerStatus] = useState(false)
     const isMobile = useMediaQuery('(max-width:768px)');
     const cars = useSelector(selectCars)
+    const solar = useSelector(selectSolar)
     return (
         <Container>
             <a href="#">
@@ -17,7 +19,7 @@ const Header = () => {
             </a>
             <Menu>
                 {cars.map((menuItem, index) => (
-                    <a key={index} href={`#${menuItem.id}`} className="text-md font-bold">
+                    <a key={index} href={`#`} className="text-md font-bold">
                         {menuItem.title}
                     </a>
                 ))}
@@ -37,14 +39,14 @@ const Header = () => {
                 </div>
                 {isMobile && (
                     cars.map((menuItem, index) => (
-                        <li key={index}><a href={`#${menuItem.link}`}>{menuItem.title}</a></li>
+                        <li key={index}><a href={`#${menuItem.id}`}>{menuItem.title}</a></li>
                     ))
                 )}
-                <li><a href="#">Roadster</a></li>
-                <li><a href="#">Trade-in</a></li>
-                <li><a href="#">Accessories</a></li>
-                <li><a href="#">Existing Inventory</a></li>
-                <li><a href="#">Used Inventory</a></li>
+                {
+                    solar.map((menuItem, index) => (
+                        <li key={index}><a href={`#${menuItem.id}`}>{menuItem.title}</a></li>
+                    ))
+                }
             </BurgerNav>
         </Container>
     )

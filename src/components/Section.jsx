@@ -26,7 +26,6 @@ const Section = ({ data }) => {
                         )}
                     </ButtonGroup>
                 </Fade>
-                <DownArrow src="./images/down-arrow.svg" alt="down-arrow" />
             </div>
         </Wrap>
     )
@@ -35,8 +34,8 @@ const Section = ({ data }) => {
 const Wrap = styled.div`
     position: relative;
     width: 100vw;
-    height: 100vh;
-    background-position: center;
+    height: 80vh;
+    background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('/images/model-s.jpg');

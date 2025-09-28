@@ -3,6 +3,7 @@ import Section from './Section'
 import { useSelector } from 'react-redux'
 import { selectCars } from '../features/car/carSlice'
 import { selectSolar } from '../features/solar/solarSlice'
+import CarsSlider from './CarsSlider'
 
 const Home = () => {
     const cars = useSelector(selectCars)
@@ -10,14 +11,7 @@ const Home = () => {
     return (
         <Container>
             {/* Section for Cars */}
-            {
-                cars && cars.map((car, index) => (
-                    <Section
-                        key={index}
-                        data={car}
-                    />
-                ))
-            }
+            <CarsSlider cars={cars} />
             {/* Section for Solar */}
             {
                 solar && solar.map((item, index) => (
