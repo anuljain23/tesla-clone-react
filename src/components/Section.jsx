@@ -1,26 +1,31 @@
 import styled from "styled-components"
+import { Fade } from "react-awesome-reveal";
 
 const Section = ({ data }) => {
     const { id, title, description, backgroundImg, leftBtnText, rightBtnText } = data;
     return (
         <Wrap id={id} className="flex flex-col justify-end items-center" bgImage={backgroundImg}>
-            <ItemText >
-                <h1 className="text-5xl font-bold !text-white">{title}</h1>
-                <p className="font-medium text-xl !mt-3 !text-white">{description}</p>
-            </ItemText>
+            <Fade duration={500} triggerOnce>
+                <ItemText >
+                    <h1 className="text-5xl font-bold !text-white">{title}</h1>
+                    <p className="font-medium text-xl !mt-3 !text-white">{description}</p>
+                </ItemText>
+            </Fade>
             <div>
-                <ButtonGroup className="flex flex-col md:flex-row gap-3">
-                    {leftBtnText && (
-                        <LeftButton>
-                            {leftBtnText}
-                        </LeftButton>
-                    )}
-                    {rightBtnText && (
-                        <RightButton>
-                            {rightBtnText}
-                        </RightButton>
-                    )}
-                </ButtonGroup>
+                <Fade duration={500} triggerOnce>
+                    <ButtonGroup className="flex flex-col md:flex-row gap-3">
+                        {leftBtnText && (
+                            <LeftButton>
+                                {leftBtnText}
+                            </LeftButton>
+                        )}
+                        {rightBtnText && (
+                            <RightButton>
+                                {rightBtnText}
+                            </RightButton>
+                        )}
+                    </ButtonGroup>
+                </Fade>
                 <DownArrow src="./images/down-arrow.svg" alt="down-arrow" />
             </div>
         </Wrap>

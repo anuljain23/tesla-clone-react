@@ -1,38 +1,23 @@
 import styled from "styled-components"
 import MenuIcon from '@mui/icons-material/Menu';
-
-const menuLinks = [
-    {
-        title: 'Cyberruck',
-        link: '#cybertruck'
-    },
-    {
-        title: 'Model S',
-        link: '#model-s'
-    },
-    {
-        title: 'Model Y',
-        link: '#model-y'
-    },
-    {
-        title: 'Model 3',
-        link: '#model-3'
-    },
-    {
-        title: 'Model X',
-        link: '#model-x'
-    },
-]
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from "react";
+import { useMediaQuery } from "@mui/material";
+import { useSelector } from "react-redux";
+import { selectCars } from "../features/car/carSlice";
 
 const Header = () => {
+    const [burgerStatus, setBurgerStatus] = useState(false)
+    const isMobile = useMediaQuery('(max-width:768px)');
+    const cars = useSelector(selectCars)
     return (
         <Container>
             <a href="#">
                 <img src="./images/logo.svg" alt="tesla-logo" />
             </a>
             <Menu>
-                {menuLinks.map((menuItem, index) => (
-                    <a key={index} href={menuItem.link} className="text-md font-bold">
+                {cars.map((menuItem, index) => (
+                    <a key={index} href={`#${menuItem.id}`} className="text-md font-bold">
                         {menuItem.title}
                     </a>
                 ))}
@@ -44,33 +29,39 @@ const Header = () => {
                 <a href="#" className="text-md font-bold">
                     Tesla Account
                 </a>
-                <CustomMenu />
+                <CustomMenu onClick={() => setBurgerStatus(true)} />
             </RightMenu>
+            <BurgerNav show={burgerStatus}>
+                <div className="flex items-center justify-end">
+                    <CustomClose onClick={() => setBurgerStatus(false)} />
+                </div>
+                {isMobile && (
+                    cars.map((menuItem, index) => (
+                        <li key={index}><a href={`#${menuItem.link}`}>{menuItem.title}</a></li>
+                    ))
+                )}
+                <li><a href="#">Roadster</a></li>
+                <li><a href="#">Trade-in</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Existing Inventory</a></li>
+                <li><a href="#">Used Inventory</a></li>
+            </BurgerNav>
         </Container>
     )
 }
 
 const Container = styled.div`
     background-color:white;
-    opacity: 0.80;
     min-height: 60px;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 10;
-    padding: 0 64px;
+    padding: 0 20px;
     top: 0;
     left: 0;
     right: 0;
-    
-    @media (max-width:768px){
-        padding: 0 20px;
-    }
-
-    @media (max-width:1248px){
-        padding: 0 36px;
-    }
 `
 
 const Menu = styled.div`
@@ -93,6 +84,29 @@ const RightMenu = styled.div`
 `
 
 const CustomMenu = styled(MenuIcon)`
+    cursor: pointer;
+`
+
+const BurgerNav = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    width: 300px;
+    list-style: none;
+    padding: 20px;
+    transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
+    transition: transform 0.2s;
+
+    li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        font-weight: 500;
+    }
+`
+
+const CustomClose = styled(CloseIcon)`
     cursor: pointer;
 `
 

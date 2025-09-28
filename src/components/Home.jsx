@@ -1,85 +1,12 @@
 import styled from 'styled-components'
 import Section from './Section'
-
-const cars = [
-    {
-        id: 'cybertruck',
-        title: 'CYBERTRUCK',
-        description: '0% APR with FSD (Supervised) Purchase Ends September 30',
-        backgroundImg: 'cybertruck.jpg',
-        leftBtnText: 'Custom Order',
-        rightBtnText: 'Existing Inventory',
-        tag: 'Utility Truck',
-    },
-    {
-        id: 'model-s',
-        title: 'Model S',
-        description: 'Now Includes Luxe Package With FSD (Supervised) and More',
-        backgroundImg: 'model-s.jpg',
-        leftBtnText: 'Custom Order',
-        rightBtnText: 'Existing Inventory',
-        tag: 'Luxury Sedan',
-    },
-    {
-        id: 'model-y',
-        title: 'Model Y',
-        description: 'Now Includes Luxe Package With FSD (Supervised) and More',
-        backgroundImg: 'model-y.jpg',
-        leftBtnText: 'Custom Order',
-        rightBtnText: 'Existing Inventory',
-        tag: 'Midsize SUV',
-    },
-    {
-        id: 'model-3',
-        title: 'Model 3',
-        description: 'Lease From $ 349/mo',
-        backgroundImg: 'model-3.jpg',
-        leftBtnText: 'Custom Order',
-        rightBtnText: 'Existing Inventory',
-        tag: 'Sports Sedan',
-    },
-    {
-        id: 'model-x',
-        title: 'Model X',
-        description: '3.99% APR Available',
-        backgroundImg: 'model-x.jpg',
-        leftBtnText: 'Custom Order',
-        rightBtnText: 'Existing Inventory',
-        tag: 'Luxury SUV',
-    }
-]
-
-const solar = [
-    {
-        title: 'Solar Panels',
-        description: 'Use Solar Energy to Power Your Home and Charge Your Tesla',
-        backgroundImg: 'solar-panel.jpg',
-        leftBtnText: 'Order Now',
-        rightBtnText: 'Learn More',
-    },
-    {
-        title: 'Solar Roof',
-        description: 'Generate Clean Energy With Your Roof',
-        backgroundImg: 'solar-roof.jpg',
-        leftBtnText: 'Order Now',
-        rightBtnText: 'Learn More',
-    },
-    {
-        title: 'Powerwall',
-        description: 'Keep Your Lights On During Outages',
-        backgroundImg: 'powerwall.jpg',
-        leftBtnText: 'Order Now',
-        rightBtnText: 'Learn More',
-    },
-    {
-        title: 'Megapack',
-        description: 'Massive Batteries for Massive Energy Support',
-        backgroundImg: 'megapack.jpg',
-        rightBtnText: 'Learn More',
-    },
-]
+import { useSelector } from 'react-redux'
+import { selectCars } from '../features/car/carSlice'
+import { selectSolar } from '../features/solar/solarSlice'
 
 const Home = () => {
+    const cars = useSelector(selectCars)
+    const solar = useSelector(selectSolar)
     return (
         <Container>
             {/* Section for Cars */}
